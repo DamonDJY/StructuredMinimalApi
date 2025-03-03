@@ -29,7 +29,10 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
         builder.HasIndex(x => x.ReferenceId)
             .IsUnique();
-        
+
+        builder.Property(u => u.ReferenceId)
+      .HasColumnType("char(36)");
+
         builder.HasMany(x => x.Posts)
             .WithOne(x => x.User)
             .HasForeignKey(x => x.UserId)

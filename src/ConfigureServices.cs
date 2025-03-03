@@ -37,7 +37,7 @@ public static class ConfigureServices
     {
         builder.Services.AddDbContext<AppDbContext>(options =>
         {
-            options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+            options.UseMySql(builder.Configuration.GetConnectionString("Default"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("Default")));
         });
     }
 
